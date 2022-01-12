@@ -67,6 +67,11 @@ def LDL_driver():
     print_result("LDL", LDL_value, classification)
     return
 
-
+def Total_driver():
+    Total_value = accept_input("Total")
+    classification = check_Total(Total_value)
+    print_result("Total", Total_value, classification)
+    return
+    
 
 interface()
