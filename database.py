@@ -1,18 +1,63 @@
-print("This is the database module and python calls it {}".format(__name__))
+def add_patient(patient_name, patient_id, age):
+    new_patient = [patient_name, patient_id, age, []]   
+    return new_patient
+    
+def main():
+    db = []
+    x = add_patient("Ann Ables", 342, 40)
+    db.append(x)
+    y = add_patient("Bob Boyles", 50, 50)
+    db.append(y)
+    z = add_patient("Chris Columbus", 111, 35)
+    db.append(z)
+    db.append(add_patient("David Dinkins", 22, 72))
+    # print(x)
+    # print(y)
+    # print(z)
+    # print(db)
+    # print(db[1])
+    # print(db[1][2])
+    # patient = db[1]
+    # patient_age = patient[2]
+    
+    # print(db[-1]) # Gives the last entry of a list
+    # print(db[0:3]) # Up to but not including the third element.
+    # s = "abcdef"
+    # print(s[3:5])
+    
 
-#import blood_calculator
+    
+    # for patient in db:
+        # for item in patient:
+            # print(item)
+        
+    found_patient = find_patient(db, 111)
+    print(found_patient)  
+    print(db)
+    add_test_to_patient(db, 111, "HDL", 100)
+    print(db)
+    return db
+    
+def find_patient(db, id_no):
+    for patient in db:
+        if patient[1] == id_no:
+            return patient
+    return
 
-#from blood_calculator import check_HDL, check_LDL
+def add_test_to_patient(db, id_no, test_name, test_result):
+    patient = find_patient(db, id_no)
+    test_tuple = (test_name, test_result)
+    patient[3].append(test_tuple)
 
-import blood_calculator as bc
-import analysis
+def print_directory(db):
+    rooms = ["Room 13", "Room 12", "Room 99", "Room 3"]
+    for i, patient in enumerate(db):
+        print("Name: {} Room: {}".format(patient[0], rooms[i]))
+    # for rooms, patient in zip(rooms, db):
+        # print("{} - {}".format(patient[0], rooms))
+        
 
-from blood_calculator import * #Imports all the functions; however, since this does not specify the module or the function being imported, it will be hard to trace a used function back to its respective module 
 
-HDL_value = 55
-#classification = blood_calculator.check_HDL(HDL_value)
-#classification = check_HDL(HDL_value)
-classification = bc.check_HDL(HDL_value)
-
-print("55 is {}".format(classification))
-x = bc.check_LDL(200)
+if __name__ == "__main__":
+    db=main()
+    print_directory(db)
