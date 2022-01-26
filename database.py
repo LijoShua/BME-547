@@ -36,6 +36,7 @@ def main():
     print(db)
     add_test_to_patient(db, 111, "HDL", 100)
     print(db)
+    return db
     
 def find_patient(db, id_no):
     for patient in db:
@@ -50,10 +51,10 @@ def add_test_to_patient(db, id_no, test_name, test_result):
 
 def print_directory(db):
     rooms = ["Room 13", "Room 12", "Room 99", "Room 3"]
-    # for i, patient in enumerate(db):
-        # print("Name {} Room: {}".format(patient[0], rooms[i]))
-    for room, patient in zip(rooms, db):
-        print("{} - {}".format(patient[0], room))
+    for i, patient in enumerate(db):
+        print("Name: {} Room: {}".format(patient[0], rooms[i]))
+    # for rooms, patient in zip(rooms, db):
+        # print("{} - {}".format(patient[0], rooms))
         
 
 
