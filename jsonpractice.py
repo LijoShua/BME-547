@@ -34,4 +34,4 @@ if __name__ == "__main__":
     # output_json(person)
     data_to_output = create_list()
     output_json(data_to_output)
-    
+
